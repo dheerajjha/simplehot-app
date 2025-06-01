@@ -55,8 +55,8 @@ class Stock {
   // Factory method to create from API response (matches backend API format)
   factory Stock.fromApiJson(Map<String, dynamic> json) {
     return Stock(
-      symbol: json['symbol'] ?? '',
-      name: json['name'] ?? '',
+      symbol: (json['symbol'] ?? '').toString(),
+      name: (json['name'] ?? '').toString(),
       exchange: 'NSE', // Default to NSE for Indian stocks
       currentPrice: (json['currentPrice'] ?? 0.0).toDouble(),
       change: (json['change'] ?? 0.0).toDouble(),
@@ -67,8 +67,10 @@ class Stock {
       yearHigh: (json['yearHigh'] ?? 0.0).toDouble(),
       yearLow: (json['yearLow'] ?? 0.0).toDouble(),
       volume: (json['volume'] ?? 0) as int,
-      sector: json['sector'] ?? 'Unknown', // Default sector if not provided
-      logoUrl: json['logoUrl'] ?? '', // Logo URL might not be in API response
+      sector: (json['sector'] ?? 'Unknown')
+          .toString(), // Default sector if not provided
+      logoUrl: (json['logoUrl'] ?? '')
+          .toString(), // Logo URL might not be in API response
     );
   }
 

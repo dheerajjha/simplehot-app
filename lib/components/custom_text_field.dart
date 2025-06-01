@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../constants/theme_constants.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String label;
+  final String? label;
   final String hint;
   final TextEditingController controller;
   final bool obscureText;
@@ -14,11 +14,13 @@ class CustomTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final FocusNode? focusNode;
   final Function(String)? onSubmitted;
+  final Function(String)? onChanged;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
 
   const CustomTextField({
     Key? key,
-    required this.label,
+    this.label,
     required this.hint,
     required this.controller,
     this.obscureText = false,
@@ -27,7 +29,9 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction = TextInputAction.next,
     this.focusNode,
     this.onSubmitted,
+    this.onChanged,
     this.suffixIcon,
+    this.prefixIcon,
   }) : super(key: key);
 
   @override
@@ -35,15 +39,17 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: const TextStyle(
-            color: AppColors.primaryTextColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
+        if (label != null) ...[
+          Text(
+            label!,
+            style: const TextStyle(
+              color: AppColors.primaryTextColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           ),
-        ),
-        const SizedBox(height: AppSizes.smallPadding),
+          const SizedBox(height: AppSizes.smallPadding),
+        ],
         TextFormField(
           controller: controller,
           obscureText: obscureText,
@@ -52,11 +58,13 @@ class CustomTextField extends StatelessWidget {
           textInputAction: textInputAction,
           focusNode: focusNode,
           onFieldSubmitted: onSubmitted,
+          onChanged: onChanged,
           style: const TextStyle(color: AppColors.primaryTextColor),
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(color: AppColors.secondaryTextColor),
             suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppSizes.mediumRadius),
               borderSide: BorderSide.none,

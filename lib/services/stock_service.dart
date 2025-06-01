@@ -57,7 +57,7 @@ class StockService {
     try {
       final response = await http.get(
         Uri.parse(
-            '${AppConfig.gatewayUrl}/api/stocks/search?q=${Uri.encodeComponent(query)}'),
+            '${AppConfig.gatewayUrl}/api/stocks/search/${Uri.encodeComponent(query)}'),
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': token,
@@ -103,3 +103,4 @@ class StockService {
     }
   }
 }
+ 

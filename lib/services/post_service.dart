@@ -8,7 +8,7 @@ import '../config/app_config.dart';
 
 class PostService {
   // Create a post
-  Future<Post?> createPost(String token, String content,
+  Future<Post?> createPost(String content, String token,
       {String? imageUrl}) async {
     try {
       final response = await http.post(
@@ -183,3 +183,4 @@ class PostService {
     }
   }
 }
+ 

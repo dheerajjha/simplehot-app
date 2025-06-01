@@ -85,3 +85,4 @@ class AppConfig {
     await prefs.setString(_baseUrlKey, _gatewayUrl);
   }
 }
+ 

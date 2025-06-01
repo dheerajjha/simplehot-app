@@ -144,20 +144,20 @@ class Prediction {
     }
 
     return Prediction(
-      id: json['id'] ?? '',
-      stockSymbol: json['stockSymbol'] ?? '',
-      stockName: json['stockName'] ?? '',
-      userId: json['userId'] ?? '',
-      username: username,
-      userAvatar: userAvatar,
+      id: (json['id'] ?? '').toString(), // Convert int to string
+      stockSymbol: (json['stockSymbol'] ?? '').toString(),
+      stockName: (json['stockName'] ?? '').toString(),
+      userId: (json['userId'] ?? '').toString(), // Convert int to string
+      username: username.toString(),
+      userAvatar: userAvatar.toString(),
       targetPrice: (json['targetPrice'] ?? 0.0).toDouble(),
       createdAt:
           DateTime.parse(json['createdAt'] ?? DateTime.now().toIso8601String()),
       targetDate: DateTime.parse(
           json['targetDate'] ?? DateTime.now().toIso8601String()),
-      description: json['description'],
-      status: parseStatus(json['status']),
-      direction: parseDirection(json['direction']),
+      description: json['description']?.toString(),
+      status: parseStatus(json['status']?.toString()),
+      direction: parseDirection(json['direction']?.toString()),
       likes: likesCount,
       comments: json['commentCount'] ?? 0, // API uses 'commentCount'
       isLikedByUser: isLikedByCurrentUser,

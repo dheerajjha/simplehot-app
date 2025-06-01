@@ -6,6 +6,10 @@ import '../components/app_bottom_nav.dart';
 import '../constants/theme_constants.dart';
 import '../models/user.dart';
 import 'home_screen.dart';
+import 'explore_screen.dart';
+import 'stocks_screen.dart';
+import 'community_screen.dart';
+import 'profile_screen.dart';
 import 'developer_options_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -27,10 +31,10 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const Placeholder(), // Explore Screen
-    const Placeholder(), // Stocks Screen
-    const Placeholder(), // Community Screen
-    const Placeholder(), // Profile Screen
+    const ExploreScreen(),
+    const StocksScreen(),
+    const CommunityScreen(),
+    const ProfileScreen(),
   ];
 
   void _onTabTapped(int index) {
